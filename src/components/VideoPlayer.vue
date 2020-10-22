@@ -106,13 +106,4 @@ import '@/assets/video.css';
     height: 500px;
     margin: 0 auto;
   }
-
-  /* 播放按钮换成圆形 */
-  /* .video-js .vjs-big-play-button{
-    
-    height: 2em;
-    width: 2em;
-    line-height: 2em;
-    border-radius: 1em;
-  } */
 </style>
