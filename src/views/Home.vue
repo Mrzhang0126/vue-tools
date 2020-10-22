@@ -20,20 +20,23 @@
       <el-table-column  prop="address" label="地址"></el-table-column>
     </el-table>
 
+    <VideoPlayer></VideoPlayer>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
 import {formatDate} from '@/utils/index'
-import HelloWorld from '@/components/HelloWorld.vue'
+// import HelloWorld from '@/components/HelloWorld.vue'
 const cityOptions = ['上海', '北京', '广州', '深圳'];
 import GMap from "../components/GMap";
+import VideoPlayer from "@/components/VideoPlayer"
 export default {
   name: 'Home',
   components: {
-    HelloWorld,
-    GMap
+    // HelloWorld,
+    GMap,
+    VideoPlayer
   },
   data() {
     return {
