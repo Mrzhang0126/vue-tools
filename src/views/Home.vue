@@ -21,22 +21,26 @@
     </el-table>
 
     <VideoPlayer></VideoPlayer>
+
+    <Child @loadedCompleted="loadedCompleted"></Child>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import {formatDate} from '@/utils/index'
+import { formatDate, debounce} from '@/utils/index'
 // import HelloWorld from '@/components/HelloWorld.vue'
 const cityOptions = ['上海', '北京', '广州', '深圳'];
 import GMap from "../components/GMap";
-import VideoPlayer from "@/components/VideoPlayer"
+import VideoPlayer from "@/components/VideoPlayer";
+import Child from './Child'
 export default {
   name: 'Home',
   components: {
     // HelloWorld,
     GMap,
-    VideoPlayer
+    VideoPlayer,
+    Child
   },
   data() {
     return {
@@ -88,7 +92,13 @@ export default {
         }
       }))
       
-    }
+    },
+    // 使用防抖函数
+    loadedCompleted: debounce(function() {
+      setTimeout(() => {
+        console.log('-----setTimeout-----');
+      },0)
+    })
   }
 }
 </script>
