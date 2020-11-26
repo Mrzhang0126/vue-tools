@@ -18,9 +18,17 @@ Vue.use(ElementUI);
 
 Vue.config.productionTip = false
 
+let aa = require('./test')
 
 new Vue({
   router,
   store,
+  created() {
+    console.log(aa.sum(1 , 2, (dd) => {
+      console.log(dd)
+    }))
+  },
   render: h => h(App)
 }).$mount('#app')
+
+

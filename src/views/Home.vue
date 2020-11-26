@@ -23,24 +23,34 @@
     <VideoPlayer></VideoPlayer>
 
     <Child @loadedCompleted="loadedCompleted"></Child>
+    <h3>===================================</h3>
+    <!-- <el-select-tree  width="120px"  placeholder="请选择内容" :data="treeData"
+      :disabled-values="disabledValues" v-model="value"></el-select-tree> -->
+    <button @click="getData">结构data里面数据</button>
+    <QRCode/>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import { formatDate, debounce} from '@/utils/index'
+import { formatDate, debounce} from '@/utils/index';
+import { permissionTreeList } from '@/utils/other';
 // import HelloWorld from '@/components/HelloWorld.vue'
 const cityOptions = ['上海', '北京', '广州', '深圳'];
 import GMap from "../components/GMap";
 import VideoPlayer from "@/components/VideoPlayer";
-import Child from './Child'
+import Child from './Child';
+import ElSelectTree from 'el-select-tree';
+import QRCode from './QRCode';
+
 export default {
   name: 'Home',
   components: {
     // HelloWorld,
     GMap,
     VideoPlayer,
-    Child
+    Child,
+    ElSelectTree
   },
   data() {
     return {
@@ -54,7 +64,19 @@ export default {
         { date: '2016-05-04', name: '王小虎', address: '上海市普陀区金沙江路 1520 弄'},
         { date: '2016-05-05', name: '王小虎', address: '上海市普陀区金沙江路 1521 弄'},
         { date: '2016-05-06', name: '王小虎', address: '上海市普陀区金沙江路 1522 弄'}
-      ]
+      ],
+      value: 2,
+      treeData: [
+        {
+          value: 1,
+          label: 'text1',
+          children: [{ value: 5, label: 'text5' }, { value: 6, label: 'text6' }]
+        },
+        { value: 2, label: 'text2' },
+        { value: 3, label: 'text3' },
+        { value: 4, label: 'text5' }
+      ],
+      disabledValues: [3]
     };
   },
    mounted() {
@@ -98,7 +120,17 @@ export default {
       setTimeout(() => {
         console.log('-----setTimeout-----');
       },0)
-    })
+    }),
+
+    getData() {
+      const arr = [1, 3, 8, 9];
+      const temp = [...arr]
+      const { checkedCities, treeData, value } = this;
+      console.log(...checkedCities)
+      console.log(...treeData)
+      console.log(value)
+      console.log(temp)
+     }
   }
 }
 </script>
