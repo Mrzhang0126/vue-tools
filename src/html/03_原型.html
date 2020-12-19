@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+    window.onload = function() {
+      /*
+        寄生式组合继承
+      */
+      function SuperType(name) {
+        this.name = name;
+      }
+
+      function SubType(name, age) {
+        SuperType.call(this, name);
+        this.age = age;
+      }
+
+      function inheritPrototype(subType, superType) {
+        let prototype = Object(superType.prototype);
+        prototype.constructor = subType;
+        subType.prototype = prototype;
+      }
+
+      inheritPrototype(SubType, SuperType);
+
+      SubType.prototype.sayAge = function() {
+        console.log(this.age);
+      }
+
+      new SubType('why', 18).sayAge();
+    }
+  </script>
+</body>
+</html>

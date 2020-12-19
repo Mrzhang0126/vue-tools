@@ -28,6 +28,10 @@
       :disabled-values="disabledValues" v-model="value"></el-select-tree> -->
     <button @click="getData">结构data里面数据</button>
     <QRCode/>
+
+    <div style="width:300px;height:300px">
+      <Process percentNum="90"/>
+    </div>
   </div>
 </template>
 
@@ -43,6 +47,8 @@ import Child from './Child';
 import ElSelectTree from 'el-select-tree';
 import QRCode from './QRCode';
 
+import Process from './Process';
+
 export default {
   name: 'Home',
   components: {
@@ -50,7 +56,8 @@ export default {
     GMap,
     VideoPlayer,
     Child,
-    ElSelectTree
+    ElSelectTree,
+    Process
   },
   data() {
     return {
